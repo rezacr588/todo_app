@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/widgets/Todos/TodoItem.dart';
 
 import 'Todo.dart';
 
@@ -26,19 +27,20 @@ class _TodoListState extends State<TodoList> {
       appBar: AppBar(
         title: const Text('Todo list'),
       ),
-      body: ListView(
+      body: ListView.builder(
         padding: const EdgeInsets.symmetric(vertical: 8.0),
-        children: _todos.map((Todo todo) {
+        itemBuilder: (BuildContext _, int index) {
+          final Todo todo = _todos[index];
           return TodoItem(
             todo: todo,
             onTodoChanged: _handleTodoChange,
           );
-        }).toList(),
+        },
       ),
       floatingActionButton: FloatingActionButton(
-          onPressed: () => _displayDialog(),
-          tooltip: 'Add Item',
-          child: Icon(Icons.add)),
+        onPressed: () => _displayDialog(),
+        tooltip: 'Add Item',
+        child: const Icon(Icons.add)),
     );
   }
 
