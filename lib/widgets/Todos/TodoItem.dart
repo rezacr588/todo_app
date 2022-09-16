@@ -25,7 +25,8 @@ class TodoItem extends StatelessWidget {
     // Todo item is pending and not done yet so return a normal text style for it
     if (status.type == Status.pending.type) {
       return const TextStyle(
-        color: Colors.black,
+        fontSize: 18,
+        fontWeight: FontWeight.w400,
       );
     } else {
       // Todo item is done so return a line-through text style for it
@@ -36,13 +37,13 @@ class TodoItem extends StatelessWidget {
     }
   }
 
-  // Template of todo widget item to display in the list tile
+  // Builder of todo widget item to display in the list tile
   @override
   Widget build(BuildContext context) {
     Icon icon = Icon(todo.status.type == Status.pending.type ? Icons.circle_outlined : Icons.task_alt_outlined);
     return ListTile(
       onTap: () {
-        // onTodoChanged(todo);
+        // onTodoShow(todo);
       },
       leading: IconButton(iconSize: 32 ,icon: icon, onPressed: () { onTodoChanged(todo); },),
 
@@ -50,6 +51,10 @@ class TodoItem extends StatelessWidget {
       subtitle: todo.description != null ? Text(
         todo.description?.toString() ?? '',
       ) : null,
+      trailing: IconButton(
+        icon: const Icon(Icons.delete),
+        onPressed: onTodoDeleted,
+      ),
     );
   }
 }

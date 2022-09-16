@@ -35,7 +35,7 @@ class _TodoListState extends State<TodoList> {
           return TodoItem(
             todo: todo,
             onTodoChanged: _handleTodoChange,
-            onTodoDeleted: _removeTodoItem,
+            onTodoDeleted: () { _removeTodoItem(index); },
           );
         },
       ),
