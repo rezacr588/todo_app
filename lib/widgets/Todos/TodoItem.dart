@@ -19,16 +19,17 @@ class TodoItem extends StatelessWidget {
   TextStyle? _getTextStyle(Status status) {
 
     // Todo item is pending and not done yet so return a normal text style for it
-    if (status == Status.pending) {
+    if (status.type == Status.pending.type) {
       return const TextStyle(
         color: Colors.green,
       );
+    } else {
+      // Todo item is done so return a line-through text style for it
+      return const TextStyle(
+        color: Colors.black,
+        decoration: TextDecoration.lineThrough,
+      );
     }
-    // Todo item is done so return a line-through text style for it
-    return const TextStyle(
-      color: Colors.black,
-      decoration: TextDecoration.lineThrough,
-    );
   }
   // Template of todo widget item to display in the list tile
   @override

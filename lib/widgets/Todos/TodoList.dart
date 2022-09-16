@@ -29,6 +29,7 @@ class _TodoListState extends State<TodoList> {
       ),
       body: ListView.builder(
         padding: const EdgeInsets.symmetric(vertical: 8.0),
+        itemCount: _todos.length,
         itemBuilder: (BuildContext _, int index) {
           final Todo todo = _todos[index];
           return TodoItem(
@@ -81,7 +82,7 @@ class _TodoListState extends State<TodoList> {
   // Function to update the status of a todo item in the list of todo items in the state
   void _handleTodoChange(Todo todo) {
     setState(() {
-      if (todo.status == Status.pending) {
+      if (todo.status.type == Status.pending.type) {
         todo.status.type = "Done";
       } else {
         todo.status.type = "Pending";
