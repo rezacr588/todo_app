@@ -35,6 +35,7 @@ class _TodoListState extends State<TodoList> {
           return TodoItem(
             todo: todo,
             onTodoChanged: _handleTodoChange,
+            onTodoDeleted: _removeTodoItem,
           );
         },
       ),
@@ -77,6 +78,13 @@ class _TodoListState extends State<TodoList> {
       _todos.add(Todo(title: title, status: Status("Pending" ))); // add the item to the list of todo items
     });
     _textFieldController.clear(); // clear the text field
+  }
+
+  // Function to remove an todo item from the list of todo items in the state
+  void _removeTodoItem(int index) {
+    setState(() {
+      _todos.removeAt(index); // remove the item from the list of todo items
+    });
   }
 
   // Function to update the status of a todo item in the list of todo items in the state
