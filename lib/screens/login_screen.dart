@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_app/notifiers/DarkThemeProvider.dart';
-import 'package:todo_app/widgets/Todos/TodoList.dart';
+import 'package:todo_app/screens/todos_screen.dart';
+import '../provider/dark_theme_provider.dart';
 
-class LoginForm extends StatefulWidget {
-  const LoginForm({super.key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
 
   @override
   LoginState createState() {
@@ -12,7 +12,7 @@ class LoginForm extends StatefulWidget {
   }
 }
 
-class LoginState extends State<LoginForm> {
+class LoginState extends State<LoginScreen> {
   // Create a global key that uniquely identifies the Form widget
   // and allows validation of the form.
   //
@@ -110,7 +110,7 @@ class LoginState extends State<LoginForm> {
                     onPressed: () {
                       // Validate returns true if the form is valid, or false otherwise.
                       if (_formKey.currentState!.validate()) {
-                        Navigator.push(context, MaterialPageRoute(builder: (_) => const TodoList()));
+                        Navigator.push(context, MaterialPageRoute(builder: (_) => const TodoScreen()));
                       }
                     },
                     child: const Text('Login'),
