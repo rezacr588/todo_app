@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_app/provider/todo_provider.dart';
+import 'package:todo_app/screens/login_screen.dart';
+import 'package:todo_app/screens/todo_screen.dart';
 import 'package:todo_app/widgets/Todos/todo_list.dart';
 
 // TodoList is a StatefulWidget, which means it can change its state.
-class TodoScreen extends StatefulWidget {
-  const TodoScreen({super.key});
+class TodosScreen extends StatefulWidget {
+  const TodosScreen({super.key});
 
   @override
-  TodoScreenState createState() => TodoScreenState();
+  TodosScreenState createState() => TodosScreenState();
 }
 
 // TodoList is a StatefulWidget, which means it can change its state.
-class TodoScreenState extends State<TodoScreen> {
+class TodosScreenState extends State<TodosScreen> {
 
   final _textFieldController = TextEditingController();
   String newTask = '';
@@ -40,16 +42,23 @@ class TodoScreenState extends State<TodoScreen> {
   // the widget template
   @override
   Widget build(BuildContext context) {
+    // turn back to login screen on clicking back button  on the appbar of the screen
     return Scaffold(
       appBar: AppBar(
         title: const Text('Todo list'),
       ),
-      body: const TodoList(),
+      body: WillPopScope(
+        child: const TodoList(),
+        onWillPop: () async {
+          Navigator.push(context, MaterialPageRoute(builder: (_) => const LoginScreen()));
+          return true;
+        },
+      ) ,
       floatingActionButton: FloatingActionButton(
-        onPressed: () => _displayDialog(),
-        tooltip: 'Add Item',
-        child: const Icon(Icons.add)),
-    );
+          onPressed: () => _displayDialog(),
+          tooltip: 'Add Item',
+          child: const Icon(Icons.add)),
+    ) ;
   }
 
   // Function to display the dialog box to add a new todo item to the list of todo items in the state

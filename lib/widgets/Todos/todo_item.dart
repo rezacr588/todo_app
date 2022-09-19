@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_app/model/todo_model.dart';
+import 'package:todo_app/screens/todo_args.dart';
 
 import '../../provider/todo_provider.dart';
 
@@ -43,12 +44,16 @@ class TodoItem extends StatelessWidget {
 
     return ListTile(
       onTap: () {
-        // onTodoShow(todo);
+        Navigator.pushNamed(
+          context,
+          '/todo',
+          arguments: TodoArgs(index),
+        );
       },
       leading: IconButton(iconSize: 32 ,icon: icon, onPressed: () { task.toggleTask(todo); },),
       title: Text(todo.title, style: _getTextStyle(todo.status)),
-      subtitle: todo.description != null ? Text(
-        todo.description?.toString() ?? '',
+      subtitle: todo.description != "" ? Text(
+        todo.description ?? '',
       ) : null,
       trailing: IconButton(
         icon: const Icon(Icons.delete),

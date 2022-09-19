@@ -30,6 +30,7 @@ class LoginState extends State<LoginScreen> {
       child: Scaffold(
           appBar: AppBar(
             title: const Text("Login"),
+            automaticallyImplyLeading: false,
             actions: [Row(
                 mainAxisAlignment: MainAxisAlignment.center,children: [
                   // show Dark icon when dark theme is enabled and vice versa
@@ -110,7 +111,7 @@ class LoginState extends State<LoginScreen> {
                     onPressed: () {
                       // Validate returns true if the form is valid, or false otherwise.
                       if (_formKey.currentState!.validate()) {
-                        Navigator.push(context, MaterialPageRoute(builder: (_) => const TodoScreen()));
+                        Navigator.push(context, MaterialPageRoute(builder: (_) => const TodosScreen()));
                       }
                     },
                     child: const Text('Login'),

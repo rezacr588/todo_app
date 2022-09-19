@@ -1,10 +1,22 @@
 // todo item model for the Todo List
 class TodoModel {
   // todo item's title
-  final String title;
+  late String title;
 
   // todo item's description
-  final String? description;
+  late String description;
+
+  // getter for the todo item's title
+  String get getTitle => title;
+
+  // setter for the todo item's title
+  set setTitle(String title) => this.title = title;
+
+  // setter for the todo item's description
+  set setDescription(String description) => this.description = description;
+
+  // getter for the todo item's description
+  String get getDescription => description;
 
   // todo item's due date
   final DateTime? dueData;
@@ -15,7 +27,7 @@ class TodoModel {
   // Constructor for the Todo
   TodoModel({
     required this.title,
-    this.description,
+    required this.description,
     this.dueData,
     required this.status,
   });

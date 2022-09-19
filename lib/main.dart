@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_app/provider/todo_provider.dart';
 import 'package:todo_app/screens/login_screen.dart';
+import 'package:todo_app/screens/todo_screen.dart';
 import 'package:todo_app/screens/todos_screen.dart';
 import '../provider/dark_theme_provider.dart';
 
@@ -43,6 +44,7 @@ class MyAppState extends State<TodoApp> {
             home: const LoginScreen(),
             routes: {
               '/login': (context) => const LoginScreen(),
+              '/todos': (context) => const TodosScreen(),
               '/todo': (context) => const TodoScreen(),
             },
           );
